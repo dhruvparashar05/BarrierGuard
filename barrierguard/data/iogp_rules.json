@@ -1,0 +1,199 @@
+{
+  "rules": [
+    {
+      "id": "energy-isolation",
+      "name": "Energy Isolation",
+      "iogp_code": "LSR-01",
+      "icon": "Zap",
+      "description": "Verify isolation and zero energy before work begins. Ensure all energy sources (electrical, mechanical, pneumatic, hydraulic, chemical, thermal) are properly isolated, locked, tagged, and tested before performing maintenance or repair.",
+      "keywords": [
+        "isolation", "isolate", "lockout", "tagout", "loto", "energized", "electrical", "voltage", "switchgear",
+        "zero energy", "de-energize", "breaker", "valve isolation", "bleed off", "residual pressure", "stored energy",
+        "substation", "motor", "pump isolation", "440v", "high voltage", "power cable", "terminal box"
+      ],
+      "severity_weight": 0.95,
+      "mandatory_barriers": [
+        "Lockout / Tagout (LOTO) application",
+        "Test for zero energy before starting",
+        "Permit to Work with isolation certificate",
+        "Dual valve isolation on hydrocarbon lines"
+      ],
+      "recommended_action": "Immediately stop work, apply certified LOTO locks, test for zero energy in presence of Authorized Electrical Person (AEP), and verify isolation log."
+    },
+    {
+      "id": "confined-space",
+      "name": "Confined Space",
+      "iogp_code": "LSR-02",
+      "icon": "Box",
+      "description": "Obtain authorization before entering a confined space. Verify atmospheric testing (oxygen, flammables, H2S, toxic gases), ensure continuous ventilation, and maintain a dedicated standby person and rescue equipment.",
+      "keywords": [
+        "confined space", "vessel entry", "tank", "separator", "column", "manifold pit", "trench", "sump",
+        "gas test", "oxygen", "h2s", "toxic", "lel", "explosive", "asphyxiation", "standby person", "hole watcher",
+        "ventilation", "breathing apparatus", "scba", "entry permit"
+      ],
+      "severity_weight": 0.95,
+      "mandatory_barriers": [
+        "Multi-gas test completed and signed within valid window",
+        "Confined Space Entry Permit authorized",
+        "Dedicated trained Standby Person stationed at entry",
+        "Forced positive mechanical ventilation active"
+      ],
+      "recommended_action": "Evacuate personnel immediately, prohibit entry, perform calibrated 4-gas test, verify forced ventilation, and post certified standby watchman."
+    },
+    {
+      "id": "working-at-height",
+      "name": "Working at Height",
+      "iogp_code": "LSR-03",
+      "icon": "ShieldAlert",
+      "description": "Protect yourself against a fall when working at height. Wear certified fall arrest equipment with 100% tie-off when working above 1.8 meters or near unprotected edges, and ensure scaffolding is inspected and tagged green.",
+      "keywords": [
+        "working at height", "scaffold", "scaffolding", "harness", "lanyard", "fall arrest", "derrick", "mast",
+        "monkey board", "elevated platform", "ladder", "fall protection", "tie-off", "anchor point", "safety belt",
+        "grating", "handrail", "unprotected edge", "aerial lift", "manbasket"
+      ],
+      "severity_weight": 0.90,
+      "mandatory_barriers": [
+        "Full body safety harness connected to certified anchor",
+        "Scaffolding green tag inspection valid",
+        "Edge protection and toe boards installed",
+        "100% tie-off compliance maintained"
+      ],
+      "recommended_action": "Halt elevated work, enforce full harness tie-off to load-rated anchorage, inspect scaffolding tag status, and provide safe work platform."
+    },
+    {
+      "id": "hot-work",
+      "name": "Hot Work",
+      "iogp_code": "LSR-04",
+      "icon": "Flame",
+      "description": "Control flammables and ignition sources. Obtain hot work authorization, conduct gas testing for flammables, clear combustible materials within 15 meters, and station a fire watch with ready extinguishing equipment.",
+      "keywords": [
+        "hot work", "welding", "grinding", "cutting", "torch", "spark", "open flame", "ignition", "gas test",
+        "fire watch", "fire extinguisher", "fire blanket", "flammable gas", "hydrocarbon area", "hazardous zone",
+        "gas free certificate", "brazing", "heat treatment"
+      ],
+      "severity_weight": 0.92,
+      "mandatory_barriers": [
+        "Hot Work Permit Class-A authorized",
+        "LEL continuous combustible gas monitoring reading 0%",
+        "Fire watchman with charged pressurized extinguisher present",
+        "15-meter clearance or fire retardant habitat enclosure"
+      ],
+      "recommended_action": "Extinguish open flame/sparks, re-verify gas-free certificate with calibrated LEL meter, check habitat integrity, and verify fire watch posting."
+    },
+    {
+      "id": "line-of-fire",
+      "name": "Line of Fire",
+      "iogp_code": "LSR-05",
+      "icon": "Crosshair",
+      "description": "Keep yourself and others out of the line of fire. Position yourself to avoid moving machinery, pressurized discharge, suspended loads, high-tension lines, whip hazards, and projectile paths.",
+      "keywords": [
+        "line of fire", "stored energy", "high pressure", "whip check", "struck by", "crushing", "pinch point",
+        "pressurized hose", "rotating equipment", "flywheel", "catline", "iron roughneck", "drill pipe",
+        "tension line", "cable snap", "hydraulic burst", "projectile"
+      ],
+      "severity_weight": 0.88,
+      "mandatory_barriers": [
+        "Barricading and red warning tape around danger zones",
+        "Pressure whip checks and safety cables installed",
+        "Guards installed over rotating shafts and pinch points",
+        "Clear personnel exclusion zone maintained"
+      ],
+      "recommended_action": "Relocate personnel outside swing/rupture radius, install safety whip-checks on all pressurized lines, and restore machinery safety guards."
+    },
+    {
+      "id": "lifting-operations",
+      "name": "Safe Mechanical Lifting",
+      "iogp_code": "LSR-06",
+      "icon": "Truck",
+      "description": "Plan lifting operations and control the area. Never walk or stand under a suspended load, verify certified rigging gear, do not exceed crane safe working load (SWL), and use tagline control.",
+      "keywords": [
+        "lifting", "crane", "rigging", "hoist", "sling", "shackle", "suspended load", "swl", "safe working load",
+        "boom", "tagline", "banksman", "rigger", "wire rope", "crane drop", "drill collar lifting", "casing hoist"
+      ],
+      "severity_weight": 0.88,
+      "mandatory_barriers": [
+        "Lifting plan approved and tool box talk conducted",
+        "Third-party inspection certificates valid for crane & tackle",
+        "Taglines used to guide load without touching",
+        "No entry permitted under suspended load footprint"
+      ],
+      "recommended_action": "Lower load safely, inspect sling third-party color codes, enforce strict exclusion barricade beneath boom path, and verify rigger competency."
+    },
+    {
+      "id": "bypassing-safety-controls",
+      "name": "Bypassing Safety Controls",
+      "iogp_code": "LSR-07",
+      "icon": "AlertTriangle",
+      "description": "Obtain authorization before overriding or disabling safety controls. Never bypass ESD valves, pressure safety valves (PSVs), high-level alarms, or fire and gas detectors without formal Management of Change (MOC) approval.",
+      "keywords": [
+        "bypass", "override", "defeat", "jumper", "bridging", "esd", "emergency shutdown", "psv", "safety valve",
+        "interlock", "gas detector inhibited", "alarm suppression", "moc", "management of change", "tamper"
+      ],
+      "severity_weight": 0.94,
+      "mandatory_barriers": [
+        "Formal MOC and Override Log authorized by Installation Manager",
+        "Compensating mitigation measures operational",
+        "Time-limited override with shift handover sign-off",
+        "Continuous physical monitoring during bypass"
+      ],
+      "recommended_action": "Reinstate safety interlock/ESD immediately. If bypass is critical, complete formal risk assessment and MOC approval with senior HSE sign-off."
+    },
+    {
+      "id": "driving-safety",
+      "name": "Driving",
+      "iogp_code": "LSR-08",
+      "icon": "Navigation",
+      "description": "Follow safe driving rules. Wear seatbelts, adhere to speed limits, do not use mobile phones while operating vehicles, perform pre-trip inspections, and respect driver journey management rest rules.",
+      "keywords": [
+        "driving", "vehicle", "truck", "tanker", "speeding", "seatbelt", "mobile phone", "distracted driving",
+        "journey management", "fatigue", "oilfield road", "skid", "rollover", "bowser", "forklift", "crew vehicle"
+      ],
+      "severity_weight": 0.80,
+      "mandatory_barriers": [
+        "Seatbelts fastened for all occupants",
+        "GPS in-vehicle monitoring system (IVMS) active and within speed limits",
+        "Zero mobile phone usage while driving",
+        "Pre-trip vehicle safety checklist completed"
+      ],
+      "recommended_action": "Enforce defensive driving policy, review IVMS speed event telemetry, inspect vehicle fitness, and suspend non-compliant transport operations."
+    },
+    {
+      "id": "work-authorization",
+      "name": "Work Authorization",
+      "iogp_code": "LSR-09",
+      "icon": "FileText",
+      "description": "Work with a valid permit when required. Understand the scope of work, verify that hazards are assessed (JSA/TRA), ensure required controls are in place, and re-authorize permit if conditions change.",
+      "keywords": [
+        "permit to work", "ptw", "work authorization", "jsa", "job safety analysis", "risk assessment", "unauthorized",
+        "scope change", "shift handover", "cold work permit", "toolbox talk", "permit expired", "toolbox meeting"
+      ],
+      "severity_weight": 0.85,
+      "mandatory_barriers": [
+        "Signed Permit to Work posted at work site",
+        "Job Safety Analysis (JSA) reviewed by all work party members",
+        "Permit Issuer field verification conducted",
+        "Daily toolbox talk recorded with sign-in sheet"
+      ],
+      "recommended_action": "Suspend task until valid PTW is countersigned, conduct comprehensive on-site JSA review with crew, and verify all control barriers in place."
+    },
+    {
+      "id": "dropped-objects",
+      "name": "Dropped Objects",
+      "iogp_code": "LSR-10",
+      "icon": "ArrowDownCircle",
+      "description": "Prevent dropped objects. Secure all tools and portable equipment when working elevated, install secondary retention on overhead fixtures, and maintain red drop zones beneath active work.",
+      "keywords": [
+        "dropped object", "drops", "falling tool", "tether", "secondary retention", "safety sling", "lanyard for tool",
+        "derrick tools", "falling pipe", "overhead hazard", "drop zone", "toe board", "safety net", "loose equipment"
+      ],
+      "severity_weight": 0.86,
+      "mandatory_barriers": [
+        "Tools tethered with wrist/structure lanyards",
+        "Secondary retention wire rope secured on elevated lights/fixtures",
+        "Barricaded drop zone below with danger signage",
+        "Inspection of derrick structure for loose items"
+      ],
+      "recommended_action": "Barricade ground exclusion zone immediately, retrofit approved tool tethers and secondary retention clamps, and conduct DROPS sweep before work resumes."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&amp;display=swap');
+      .hindi { font-family: 'Arial Unicode MS', 'Mangal', 'Noto Sans Devanagari', sans-serif; font-weight: 700; font-size: 13px; fill: #111827; }
+      .english { font-family: 'Inter', 'Arial Black', -apple-system, sans-serif; font-weight: 800; font-size: 15px; fill: #111827; letter-spacing: -0.3px; }
+      .motto { font-family: 'Georgia', 'Times New Roman', serif; font-style: italic; font-size: 9.5px; fill: #4B5563; }
+    </style>
+  </defs>
+
+  <!-- Left Emblem -->
+  <g transform="translate(8, 6)">
+    <!-- Outer Black Circle -->
+    <circle cx="18" cy="18" r="16" fill="#0F172A" />
+    <!-- Inner White Circle -->
+    <circle cx="18" cy="18" r="7.5" fill="#FFFFFF" />
+    <!-- Red Pillar / Droplet Stand -->
+    <rect x="12" cy="28" width="12" height="22" rx="1.5" fill="#DC2626" />
+  </g>
+
+  <!-- Text Hierarchy -->
+  <g transform="translate(54, 8)">
+    <!-- Hindi: ऑयल इंडिया लिमिटेड -->
+    <text x="0" y="14" class="hindi">ऑयल इंडिया लिमिटेड</text>
+    
+    <!-- English: Oil India Limited -->
+    <text x="0" y="32" class="english">Oil India Limited</text>
+    
+    <!-- Red Accent Rule -->
+    <line x1="0" y1="37" x2="165" y2="37" stroke="#DC2626" stroke-width="1.2" />
+    
+    <!-- Motto: Conquering Newer Horizons -->
+    <text x="0" y="49" class="motto">Conquering Newer Horizons</text>
+  </g>
+</svg>

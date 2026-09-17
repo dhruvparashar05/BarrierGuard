@@ -1,0 +1,12 @@
+{
+  "name": "barrierguard-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BarrierGuard: SIF Precursor Intelligence Engine for Oil India Limited",
+  "scripts": {
+    "dev": "npm --prefix barrierguard/web run dev",
+    "web": "npm --prefix barrierguard/web run dev",
+    "mobile": "npm --prefix barrierguard/mobile run start",
+    "backend": "python -m uvicorn barrierguard.backend.app.main:app --host 0.0.0.0 --port 8000 --reload"
+  }
+}
