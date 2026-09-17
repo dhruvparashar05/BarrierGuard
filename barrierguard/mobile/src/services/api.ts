@@ -1,8 +1,10 @@
 import { Platform } from 'react-native';
 
-// Physical device connects over LAN Wi-Fi (192.168.1.9), web connects via localhost
+// Support environment variable EXPO_PUBLIC_API_URL for production EAS builds
+const envUrl = process.env.EXPO_PUBLIC_API_URL;
 const LAN_HOST = '192.168.1.9';
-const BASE_URL = Platform.OS === 'web' ? 'http://localhost:8000/api' : `http://${LAN_HOST}:8000/api`;
+const defaultHost = Platform.OS === 'web' ? 'http://localhost:8000/api' : `http://${LAN_HOST}:8000/api`;
+const BASE_URL = envUrl ? (envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`) : defaultHost;
 
 export const mobileApi = {
   async getDashboardSummary() {
