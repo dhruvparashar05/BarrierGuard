@@ -4,6 +4,7 @@
   "private": true,
   "description": "BarrierGuard: SIF Precursor Intelligence Engine for Oil India Limited",
   "scripts": {
+    "build": "npm --prefix barrierguard/web run build && node -e \"const fs = require('fs'); fs.cpSync('barrierguard/web/dist', 'dist', {recursive: true});\"",
     "dev": "npm --prefix barrierguard/web run dev",
     "web": "npm --prefix barrierguard/web run dev",
     "mobile": "npm --prefix barrierguard/mobile run start",
