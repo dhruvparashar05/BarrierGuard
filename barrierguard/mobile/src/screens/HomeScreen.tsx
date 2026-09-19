@@ -6,7 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
-  Platform
+  Platform,
+  RefreshControl
 } from 'react-native';
 import { mobileApi } from '../services/api';
 
@@ -17,16 +18,41 @@ interface HomeScreenProps {
 export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigateTab }) => {
   const [summary, setSummary] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
+  const fetchSummary = (isRefresh = false) => {
+    if (isRefresh) {
+      setRefreshing(true);
+    } else {
+      setLoading(true);
+    }
+
     mobileApi.getDashboardSummary()
       .then((data) => setSummary(data))
       .catch((err) => console.log('Mobile summary error:', err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setRefreshing(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchSummary();
   }, []);
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.content}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={() => fetchSummary(true)}
+          tintColor="#2563EB"
+          colors={['#2563EB']}
+        />
+      }
+    >
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.greeting}>Good morning, HSE Analyst</Text>
@@ -49,30 +75,30 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigateTab }) => {
       {/* Today's Overview */}
       <Text style={styles.sectionTitle}>Today's Operational Overview</Text>
 
-      {loading ? (
+      {loading && !summary ? (
         <ActivityIndicator size="small" color="#2563EB" style={{ marginVertical: 20 }} />
       ) : (
         <View style={styles.kpiGrid}>
           <View style={styles.kpiCard}>
             <Text style={styles.kpiLabel}>Total Reports</Text>
-            <Text style={styles.kpiValue}>{summary?.total_reports || 750}</Text>
+            <Text style={styles.kpiValue}>{summary?.total_reports ?? 751}</Text>
             <Text style={styles.kpiSub}>All OIL Assets</Text>
           </View>
 
           <View style={[styles.kpiCard, styles.kpiCardRed]}>
             <Text style={[styles.kpiLabel, { color: '#B91C1C' }]}>SIF Potential</Text>
             <Text style={[styles.kpiValue, { color: '#DC2626' }]}>
-              {summary?.sif_potential_reports || 195}
+              {summary?.sif_potential_reports ?? 196}
             </Text>
             <Text style={[styles.kpiSub, { color: '#DC2626' }]}>
-              {summary?.sif_percentage || 26}% Ratio
+              {summary?.sif_percentage != null ? `${summary.sif_percentage}% Ratio` : '26.1% Ratio'}
             </Text>
           </View>
 
           <View style={styles.kpiCard}>
             <Text style={styles.kpiLabel}>High-Risk Sites</Text>
             <Text style={[styles.kpiValue, { color: '#B45309' }]}>
-              {summary?.priority_sites_count || 5}
+              {summary?.priority_sites_count ?? 5}
             </Text>
             <Text style={styles.kpiSub}>Priority Focus</Text>
           </View>
@@ -80,7 +106,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigateTab }) => {
           <View style={styles.kpiCard}>
             <Text style={styles.kpiLabel}>Active Alerts</Text>
             <Text style={[styles.kpiValue, { color: '#DC2626' }]}>
-              {summary?.recent_alerts_count || 2}
+              {summary?.recent_alerts_count ?? 2}
             </Text>
             <Text style={styles.kpiSub}>Unacknowledged</Text>
           </View>
@@ -107,7 +133,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigateTab }) => {
       >
         <View>
           <Text style={styles.navRowTitle}>View Safety Reports Feed</Text>
-          <Text style={styles.navRowSub}>Browse 750 field near-misses and precursor logs</Text>
+          <Text style={styles.navRowSub}>Browse {summary?.total_reports ?? 751}+ field near-misses and precursor logs</Text>
         </View>
         <Text style={styles.navArrow}>›</Text>
       </TouchableOpacity>

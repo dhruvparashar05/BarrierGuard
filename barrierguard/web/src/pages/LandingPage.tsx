@@ -20,13 +20,22 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { OilLogo } from '../components/OilLogo';
+import { api } from '../services/api';
+import { DashboardSummary } from '../types';
 
 export const LandingPage: React.FC = () => {
   const { isAuthenticated } = useAuth();
+  const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [isDemoOpen, setIsDemoOpen] = useState(false);
   const [activeDemoStep, setActiveDemoStep] = useState(1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    api.getDashboardSummary()
+      .then((data) => setSummary(data))
+      .catch((err) => console.log('Landing summary fetch error:', err));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -258,7 +267,7 @@ export const LandingPage: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
-                    752
+                    {summary?.total_reports ?? 751}
                   </div>
                   <div className="text-xs text-slate-300 font-medium mt-1">
                     Total Reports
@@ -273,9 +282,9 @@ export const LandingPage: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none flex items-center gap-2">
-                    <span>197</span>
+                    <span>{summary?.sif_potential_reports ?? 196}</span>
                     <span className="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                      26.2%
+                      {summary?.sif_percentage != null ? `${summary.sif_percentage}%` : '26.1%'}
                     </span>
                   </div>
                   <div className="text-xs text-slate-300 font-medium mt-1">
@@ -291,7 +300,7 @@ export const LandingPage: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
-                    12
+                    {summary?.high_risk_patterns ?? 12}
                   </div>
                   <div className="text-xs text-slate-300 font-medium mt-1">
                     High-Risk Patterns
@@ -306,7 +315,7 @@ export const LandingPage: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-none">
-                    5
+                    {summary?.priority_sites_count ?? 5}
                   </div>
                   <div className="text-xs text-slate-300 font-medium mt-1">
                     Priority Sites
