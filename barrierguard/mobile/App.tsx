@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,7 +8,6 @@ import {
   StatusBar as RNStatusBar
 } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StatusBar } from 'expo-status-bar';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { NewReportScreen } from './src/screens/NewReportScreen';
 import { ReportsListScreen } from './src/screens/ReportsListScreen';
@@ -18,6 +17,13 @@ import { ProfileScreen } from './src/screens/ProfileScreen';
 function MainApp() {
   const insets = useSafeAreaInsets();
   const [currentTab, setCurrentTab] = useState<'home' | 'reports' | 'new-report' | 'alerts' | 'profile'>('home');
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      RNStatusBar.setTranslucent(true);
+      RNStatusBar.setBackgroundColor('#0F172A');
+    }
+  }, []);
 
   // Dynamically compute safe-area top inset, ensuring content starts below Android status bar/camera notch
   const topInset = Math.max(
@@ -30,11 +36,11 @@ function MainApp() {
 
   return (
     <View style={styles.rootContainer}>
-      {/* Light status bar icons (white clock, notifications, battery) over the dark navy header */}
-      <StatusBar style="light" />
+      {/* Light status bar icons over the dark navy header with matching background */}
+      <RNStatusBar barStyle="light-content" backgroundColor="#0F172A" translucent={true} />
 
       {/* Top Mobile Bar - Safe Area Top Inset ensures logo/text never collide with system status bar */}
-      <View style={[styles.topBar, { paddingTop: topInset + 10 }]}>
+      <View style={[styles.topBar, { paddingTop: topInset + 8 }]}>
         <Text style={styles.brandTitle}>🛡️ BarrierGuard</Text>
         <Text style={styles.brandOrg}>OIL Field App</Text>
       </View>
